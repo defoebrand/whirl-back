@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'polls/index'
+  patch 'polls/update'
   get 'platforms/index'
   get 'influencers/index'
   get 'companies/index'
