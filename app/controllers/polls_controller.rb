@@ -7,8 +7,14 @@ class PollsController < ApplicationController
 
   def update
     @poll = Poll.first
-    @poll.influencers += 1 if params[:type] == 'influencer'
-    @poll.companies += 1 if params[:type] == 'company'
+    @poll.influencers += 1 if poll_params[:type] == 'influencer'
+    @poll.companies += 1 if poll_params[:type] == 'company'
     @poll.save
+  end
+
+  private
+
+  def poll_params
+    params.require(:poll).permit(:type)
   end
 end
